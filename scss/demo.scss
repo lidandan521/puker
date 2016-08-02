@@ -1,0 +1,41 @@
+$width:400px;
+.test{
+	width: $width;
+	height: $width;
+	border-radius: 50%;
+	position: relative;
+	border: 1px solid #333;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	background: #333;
+}
+%juzhong{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+};
+
+li{
+	@extend %juzhong;
+	width: 1px;
+	height: $width/20;
+	transition:all .8s ease;
+	background: #ddd;
+	list-style: none;
+	opacity: 0;
+	&:nth-child(5n){
+		width:2px;
+		height: $width/10;
+		background: #fff;
+	};
+}
+@for $i from 1 through 60{
+	.test:hover li:nth-child(#{$i}){
+      transform:rotateZ($i*6deg) translateY($width/2-$width/40);
+      opacity: 1;
+	}
+}
